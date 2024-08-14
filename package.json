@@ -10,7 +10,8 @@
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js"
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gcd": "bin/brain-gcd.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/Katerus16/frontend-project-44#readme",
   "dependencies": {
+    "mathjs": "^13.0.3",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
