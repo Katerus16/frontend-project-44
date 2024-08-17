@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
+import * as math from 'mathjs';
 import nameQuestion from '../src/cli.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
@@ -24,12 +25,13 @@ const calculateExpression = (number1, number2, operator) => {
 
 const resultExpression = () => {
   const name = nameQuestion();
+  math.LN2(50);
   for (let i = 0; i < 3; i += 1) {
     const number1 = getRandomInt(100);
     const number2 = getRandomInt(100);
     const operator = getRandomOperator();
     console.log('What is the result of the expression?');
-    console.log(`Quetion: ${number1} ${operator} ${number2}`);
+    console.log(`Question: ${number1} ${operator} ${number2}`);
     const answerExpression = readlineSync.question('Your answer: ');
     const result = calculateExpression(number1, number2, operator);
     if (Number(answerExpression) === result) {
