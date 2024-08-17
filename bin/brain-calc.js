@@ -29,7 +29,7 @@ const resultExpression = () => {
     const number2 = getRandomInt(100);
     const operator = getRandomOperator();
     console.log('What is the result of the expression?');
-    console.log(`Question: ${number1} ${operator} ${number2}`);
+    console.log(`Quetion: ${number1} ${operator} ${number2}`);
     const answerExpression = readlineSync.question('Your answer: ');
     const result = calculateExpression(number1, number2, operator);
     if (Number(answerExpression) === result) {
