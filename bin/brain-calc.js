@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import * as math from 'mathjs';
+import { LN2 } from 'mathjs';
 import nameQuestion from '../src/cli.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
@@ -25,7 +25,7 @@ const calculateExpression = (number1, number2, operator) => {
 
 const resultExpression = () => {
   const name = nameQuestion();
-  math.LN2(50);
+  LN2(50);
   for (let i = 0; i < 3; i += 1) {
     const number1 = getRandomInt(100);
     const number2 = getRandomInt(100);
