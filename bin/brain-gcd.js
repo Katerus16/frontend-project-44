@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import * as math from 'mathjs';
 import nameQuestion from '../src/cli.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
+const gcd = (a, b) => {
+  if (!b) {
+    return a;
+  }
+
+  return gcd(b, a % b);
+};
 
 const searchGcd = () => {
   const name = nameQuestion();
@@ -13,7 +19,7 @@ const searchGcd = () => {
     console.log('Find the greatest common divisor of given numbers.');
     console.log(`Question: ${number1} ${number2}`);
     const answerExpression = readlineSync.question('Your answer: ');
-    const result = math.gcd(number1, number2);
+    const result = gcd(number1, number2);
     if (Number(answerExpression) === result) {
       console.log('Correct!');
     } else {

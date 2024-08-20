@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import * as math from 'mathjs';
 import nameQuestion from '../src/cli.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
+const isPrime = (num) => {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i += 1) {
+    if (num % i === 0) return false;
+  }
+  return num > 1;
+};
 
-const isPrime = () => {
+const primeGame = () => {
   const name = nameQuestion();
   for (let i = 0; i < 3; i += 1) {
     const number = getRandomInt(100);
@@ -13,9 +18,9 @@ const isPrime = () => {
     console.log(`Question: ${number}`);
     const answerEven = readlineSync.question('Your answer: ');
     const lowCase = answerEven.toLowerCase();
-    if (math.isPrime(number) && lowCase === 'yes') {
+    if (isPrime(number) && lowCase === 'yes') {
       console.log('Correct!');
-    } else if (!math.isPrime(number) && lowCase === 'no') {
+    } else if (!isPrime(number) && lowCase === 'no') {
       console.log('Correct!');
     } else {
       console.log(`${lowCase} is wrong answer ;(. Correct answer was ${(lowCase === 'yes') ? 'no' : 'yes'}.`);
@@ -26,4 +31,4 @@ const isPrime = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
-isPrime();
+primeGame();
