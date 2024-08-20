@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import nameQuestion from "../src/cli.js";
+import nameQuestion from '../src/cli.js';
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
@@ -16,8 +16,7 @@ const isCorrect = () => {
       console.log('Correct!');
     } else if (number % 2 !== 0 && lowCase === 'no') {
       console.log('Correct!');
-    }
-    else {
+    } else {
       console.log(`${lowCase} is wrong answer ;(. Correct answer was ${(lowCase === 'yes') ? 'no' : 'yes'}.`);
       console.log(`Let's try again, ${name}!`);
       return;
