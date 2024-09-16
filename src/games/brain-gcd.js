@@ -1,26 +1,25 @@
-#!/usr/bin/env node
 import {
-  nameQuestion, taskForUser, getAnswer, checkAnswer,
+  taskForUser, getAnswer, checkAnswer,
 } from '../cli.js';
-import { getRandomInt, gcd } from '../index.js';
+import { getRandomInt, startGame } from '../index.js';
 
-const searchGcd = () => {
-  const name = nameQuestion();
-  for (let i = 0; i < 3; i += 1) {
-    const number1 = getRandomInt(100);
-    const number2 = getRandomInt(100);
-
-    const result = gcd(number1, number2);
-
-    taskForUser('Find the greatest common divisor of given numbers.', `${number1} ${number2}`);
-
-    const answerExpression = Number(getAnswer());
-    if (!checkAnswer(answerExpression, result)) {
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
+const gcd = (a, b) => {
+  if (!b) {
+    return a;
   }
-  console.log(`Congratulations, ${name}!`);
+
+  return gcd(b, a % b);
 };
 
-export default searchGcd;
+const runSearchGcd = () => {
+  startGame(() => {
+    const number1 = getRandomInt(100);
+    const number2 = getRandomInt(100);
+    const result = gcd(number1, number2);
+    taskForUser('Find the greatest common divisor of given numbers.', `${number1} ${number2}`);
+    const answerExpression = Number(getAnswer());
+    return checkAnswer(answerExpression, result);
+  });
+};
+
+export default runSearchGcd;

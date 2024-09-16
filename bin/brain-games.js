@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import { nameQuestion } from '../src/cli.js';
+import { askName } from '../src/cli.js';
 
-nameQuestion();
+askName();
