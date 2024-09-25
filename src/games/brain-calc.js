@@ -1,25 +1,24 @@
 import {
-  taskForUser, getAnswer, checkAnswer,
-} from '../cli.js';
-import { getRandomInt, startGame } from '../index.js';
+  getRandomInt, startGame, taskForUser, getAnswer, checkAnswer,
+} from '../index.js';
+
+const rulesGame = 'What is the result of the expression?';
 
 const calculateExpression = (number1, number2, operator) => {
   switch (operator) {
     case '-': return number1 - number2;
     case '+': return number1 + number2;
     case '*': return number1 * number2;
-    default: return undefined;
+    default:
+      throw new Error(`Unknown operator: '${operator}'!`);
   }
 };
 
+const operatorArray = ['+', '-', '*'];
+
 const getRandomOperator = () => {
   const number = getRandomInt(3);
-  switch (number) {
-    case 0: return '+';
-    case 1: return '-';
-    case 2: return '*';
-    default: return undefined;
-  }
+  return operatorArray[number];
 };
 
 const runBrainCalc = () => {
@@ -28,7 +27,7 @@ const runBrainCalc = () => {
     const number2 = getRandomInt(100);
     const operator = getRandomOperator();
     const result = calculateExpression(number1, number2, operator);
-    taskForUser('What is the result of the expression?', `${number1} ${operator} ${number2}`);
+    taskForUser(rulesGame, `${number1} ${operator} ${number2}`);
     const answerExpression = Number(getAnswer());
     return checkAnswer(answerExpression, result);
   });

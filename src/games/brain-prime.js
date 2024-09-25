@@ -1,7 +1,8 @@
 import {
-  taskForUser, getAnswer, checkAnswer,
-} from '../cli.js';
-import { getRandomInt, startGame } from '../index.js';
+  getRandomInt, startGame, taskForUser, getAnswer, checkAnswer,
+} from '../index.js';
+
+const rulesGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   for (let i = 2, s = Math.sqrt(num); i <= s; i += 1) {
@@ -14,7 +15,7 @@ const rusPrimeGame = () => {
   startGame(() => {
     const number = getRandomInt(100);
     const result = isPrime(number) ? 'yes' : 'no';
-    taskForUser('Answer "yes" if given number is prime. Otherwise answer "no".', number);
+    taskForUser(rulesGame, number);
     const answerPrime = getAnswer().toLowerCase();
     return checkAnswer(answerPrime, result);
   });
