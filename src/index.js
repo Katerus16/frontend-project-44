@@ -11,31 +11,20 @@ const askName = () => {
   return answer;
 };
 
-export const startGame = (gameFn) => {
+export const startGame = (rulesGame, gameFn) => {
   const name = askName();
   for (let i = 0; i < roundCount; i += 1) {
-    const resultRunGame = gameFn();
-    if (!resultRunGame) {
+    const exercise = gameFn();
+    console.log(rulesGame);
+    console.log(`Question: ${exercise.task}`);
+    const answer = readlineSync.question('Your answer: ').toLowerCase();
+    if (answer === exercise.rightAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${exercise.rightAnswer}.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }
   }
   console.log(`Congratulations, ${name}!`);
-};
-
-export const taskForUser = (text, task) => {
-  console.log(text);
-  console.log(`Question: ${task}`);
-};
-
-export const getAnswer = () => readlineSync.question('Your answer: ');
-
-export const checkAnswer = (userAnswer, rightAnswer) => {
-  if (userAnswer === rightAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-
-  console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${rightAnswer}.`);
-  return false;
 };
